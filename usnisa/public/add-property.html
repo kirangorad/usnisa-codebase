@@ -182,7 +182,10 @@
 			  if(response.status == 401 || response.status == 403)
 				  window.location.replace("/signin-admin.html");
 		  },
-		  error: function(){}
+		  error: function(errResponse){
+		  	if(errResponse.status == 401 || errResponse.status == 403)
+				  window.location.replace("/signin-admin.html");	
+		  }
 	});
   });
 
