@@ -42,6 +42,8 @@
 	<script src="js/jquery.min.js"></script>   
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.js"></script>
+	<!-- Bootbox for alerts and popups -->
+    <script src="js/bootbox.js"></script>   
 	<!-- Angular library -->
 	<script src="js/angular.min.js"></script>
 	<!-- <script src="js/angular-cookies.min.js"></script> -->
@@ -51,7 +53,7 @@
 	<script src="controllers/config.js"></script>
 
   </head>
-  <body class="aa-price-range">  
+  <body class="aa-price-range" ng-controller="mainController">  
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="pulse"></div>
@@ -385,7 +387,7 @@
           <span></span>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>         
         </div>
-        <div class="aa-latest-properties-content" ng-controller="latestPropertyController">
+        <div class="aa-latest-properties-content">
           <div class="row">
             <div class="col-md-4" ng-repeat="latestProperty in latestProperties">
               <article class="aa-properties-item">
@@ -1043,30 +1045,48 @@
               <div class="aa-title">
                 <h2>Send Your Message</h2>
                 <span></span>
-                <p>Your email address will not be published. Required fields are marked <strong class="required">*</strong></p>
+                <p ng-bind="headerFB"></p>
               </div>
               <div class="aa-contact-form">
-                <form class="contactform">                  
-                  <p class="comment-form-author">
-                    <label for="author">Name <span class="required">*</span></label>
-                    <input type="text" name="author" value="" size="30" required="required">
-                  </p>
-                  <p class="comment-form-email">
-                    <label for="email">Email <span class="required">*</span></label>
-                    <input type="email" name="email" value="" aria-required="true" required="required">
-                  </p>
-                  <p class="comment-form-url">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject">  
-                  </p>
-                  <p class="comment-form-comment">
-                    <label for="comment">Message</label>
-                    <textarea name="comment" cols="45" rows="8" aria-required="true" required="required"></textarea>
-                  </p>                
-                  <p class="form-submit">
-                    <input type="submit" name="submit" class="aa-browse-btn" value="Send Message">
-                  </p>        
-                </form>
+                <form name="userFeedbackForm" ng-submit="submitFeedBackForm()" novalidate>
+
+					<!-- NAME -->
+					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.name.$invalid && !userFeedbackForm.name.$pristine }">
+						<label>Name</label>
+						<input type="text" name="name" class="form-control" ng-model="userFeedback.feedbackName" required>
+						<p ng-show="userFeedbackForm.name.$invalid && !userFeedbackForm.name.$pristine" class="help-block">You name is required.</p>
+					</div>
+					<!-- EMAIL -->
+					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.email.$invalid && !userFeedbackForm.email.$pristine }">
+						<label>Email</label>
+						<input type="email" name="email" class="form-control" ng-model="userFeedback.feedbackEmail">
+						<p ng-show="userFeedbackForm.email.$invalid && !userFeedbackForm.email.$pristine" class="help-block">Enter a valid email.</p>
+					</div>
+					<!-- SUBJECT -->
+					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.subject.$invalid && !userFeedbackForm.subject.$pristine }">
+						<label>Subject</label>
+						<input type="text" name="subject" class="form-control" ng-model="userFeedback.feedbackSubject" required>
+						<p ng-show="userFeedbackForm.subject.$invalid && !userFeedbackForm.subject.$pristine" class="help-block">You subject is required.</p>
+					</div>
+					<!-- MESSAGE-->
+					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.message.$invalid && !userFeedbackForm.message.$pristine }">
+						<label>Message</label>
+						<textarea name="message" class="form-control" ng-model="userFeedback.feedbackMessage" required></textarea>
+						<p ng-show="userFeedbackForm.message.$invalid && !userFeedbackForm.message.$pristine" class="help-block">You message is required.</p>
+					</div>
+				  
+					<!-- USERNAME 
+					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.username.$invalid && !userFeedbackForm.username.$pristine }">
+						<label>Username</label>
+						<input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+						<p ng-show="userFeedbackForm.username.$error.minlength" class="help-block">Username is too short.</p>
+						<p ng-show="userFeedbackForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+					</div>
+					-->
+					
+					<button type="submit" class="btn btn-primary" ng-disabled="userFeedbackForm.$invalid">Submit</button>
+					
+				</form>
               </div>
             </div>
           </div>

@@ -14,6 +14,7 @@ var configDB = require('./config/database');
 var routes = require('./routes/index');
 var authRoutes = require('./routes/authRoutes')(passport);
 var listingsRoutes = require('./routes/listingsRoutes')(passport);
+var feedbackRoutes = require('./routes/feedbackRoutes')(passport);
 //var users = require('./routes/users');
 
 //configuration ===============================================================
@@ -66,6 +67,7 @@ app.use(function(req, res, next) {
 app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/list', listingsRoutes);
+app.use('/fback', feedbackRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
