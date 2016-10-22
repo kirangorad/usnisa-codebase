@@ -367,6 +367,15 @@ jQuery(function($){
         // instead of a settings object
       ]
     }); 
+	
+	
+	/* ----------------------------------------------------------- */
+	/*  14. COLLAPSING THE NAV BAR AFTER CLICK
+	/* ----------------------------------------------------------- */      
+
+	$('.navbar-collapse a').click(function(){
+		$(".navbar-collapse").collapse('hide');
+	});
 
  
 });

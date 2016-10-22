@@ -110,25 +110,28 @@
           <!-- Text based logo -->
            <!-- <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a> -->
            <!-- Image based logo -->
-           <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/usnisa-logo.png" alt="logo"></a>
+           <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/usnisa-logo-brown.png" alt="logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li class="active"><a href="index.html">HOME</a></li>
+          <ul id="top-menu" style="background-color:black;" class="nav navbar-nav navbar-right aa-main-nav">
+            <li><a href="#">HOME</a></li> <!-- <li class="active" will highlight the menu> -->
             <li class="dropdown">
-              <a class="dropdown-toggle page-scroll" data-toggle="dropdown" href="#aa-about-us">ABOUT US <span class="caret"></span></a>
+              <a class="dropdown-toggle page-scroll" data-toggle="dropdown">ABOUT<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a class="page-scroll" href="#aa-agents">OUR AGENTS</a></li>
+                <li><a class="page-scroll" href="#aa-about-us">ABOUT US</a></li>
                 <li><a class="page-scroll" href="#aa-service">OUR OTHER SERVICES</a></li>                                            
               </ul>
             </li>
-            <li class="dropdown">
+			<li><a class="page-scroll" href="#aa-latest-property">PROPERTIES</a></li>
+            <!-- Coomenting to show single menu
+			<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
                 <li><a class="page-scroll" href="#aa-latest-property">LATEST PROPERTIES</a></li>
                 <li><a class="page-scroll" href="#aa-promo-banner">SEARCH PROPERTIES</a></li>                                            
               </ul>
             </li>
+			-->
             <!-- <li><a class="page-scroll" href="#aa-client-testimonial">TESTIMONIAL</a></li>  -->
             <li><a class="page-scroll" href="#aa-contact">CONTACT US</a></li>
              <!-- Commenting Menus for creating one page app
@@ -164,22 +167,7 @@
       <div class="aa-top-slider">
         <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="img/slider/3.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">2 BHK</span>
-            <h2 class="aa-top-slider-title">1560 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Padur, Kelambakkam</p>
-            <span class="aa-top-slider-off">15% OFF</span>
-            <p class="aa-top-slider-price">₹ 44,60,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
-        </div>
-        <!-- / Top slider single slide -->
-        <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/slider/2.jpg" alt="img">
+          <img src="img/slider/7.jpg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">3 BHK</span>
@@ -194,7 +182,7 @@
         <!-- / Top slider single slide -->
         <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="img/slider/1.jpg" alt="img">
+          <img src="img/slider/8.jpg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Duplex</span>
@@ -209,7 +197,7 @@
         <!-- / Top slider single slide -->       
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="img/slider/5.jpg" alt="img">
+          <img src="img/slider/9.jpg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">1BHK</span>
@@ -224,7 +212,7 @@
         <!-- / Top slider single slide -->        
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="img/slider/4.jpg" alt="img">
+          <img src="img/slider/10.jpg" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">3BHK</span>
@@ -239,7 +227,7 @@
         <!-- / Top slider single slide -->
          <!-- Top slider single slide -->
         <div class="aa-top-slider-single">
-          <img src="img/slider/6.jpg" alt="img">
+          <img src="img/slider/7.jpg" alt="img">
           <!-- Top slider content //Commenting
           <div class="aa-top-slider-content">
             <span class="aa-top-slider-catg">Duplex</span>
@@ -348,19 +336,31 @@
         <div class="col-md-12">
           <div class="aa-about-us-area">
             <div class="row">
+			  <!-- commenting the aboutus side image	
               <div class="col-md-5">
                 <div class="aa-about-us-left">
                   <img src="img/about-us.png" alt="image">
                 </div>
               </div>
-              <div class="col-md-7">
+			  // end of aboutus image-->
+              <div class="col-md-12">
                 <div class="aa-about-us-right">
-                  <div class="aa-title">
-                    <h2>About Us</h2>
-                    <span></span>
-                  </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?</p>                  
-                  <ul>
+					<div class="aa-title">
+						<h2>About Us</h2>
+						<span></span>
+						<p>
+						We are Chennai based real estate analytics company focused on increasing chances of success by making more informed,
+						objective real estate decisions thereby seamlessly bridging the gap between the buyers and sellers.
+						</p>
+						<p>			
+						Whether you're buying your first Vills or selling your third home, 
+						USNISA.IN will provide one cohesive team to offer you a seamless experience so you can 
+						achieve your real estate goals. We offer a wide range of professional services, 
+						and our team will work with you to find the best deals.
+						</p>                  
+					</div>
+				  <!--
+				  <ul>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis.</li>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia.</li>                    
@@ -368,6 +368,7 @@
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia.</li>
                   </ul>
+				  -->
                 </div>
               </div>
             </div>
@@ -385,7 +386,7 @@
         <div class="aa-title">
           <h2>Latest Properties</h2>
           <span></span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>         
+          <p>Your Property Search Starts Here</p>         
         </div>
         <div class="aa-latest-properties-content">
           <div class="row">
@@ -577,7 +578,7 @@
             <div class="aa-title">
               <h2>Our Other Services</h2>
               <span></span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>
+              <p>Take a look at our other services.</p>
             </div>
             <!-- service content -->
             <div class="aa-service-content">
@@ -588,8 +589,11 @@
                       <span class="fa fa-home"></span>
                     </div>
                     <div class="aa-single-service-content">
-                      <h4><a href="#">Property Sale</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                      <h4>Property Sale</h4>
+                      <p>
+						Experinced real estate agents, 
+						Property visit in short notice. Promicing selling price.
+					  </p>
                     </div>
                   </div>
                 </div>
@@ -599,8 +603,8 @@
                       <span class="fa fa-check"></span>
                     </div>
                     <div class="aa-single-service-content">
-                      <h4><a href="#">Property Rent</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                      <h4>Property Rent</h4>
+                      <p>Properties on rent for Commercial, Personal purpose at right place in right price.</p>
                     </div>
                   </div>
                 </div>
@@ -610,9 +614,12 @@
                       <span class="fa fa-crosshairs"></span>
                     </div>
                     <div class="aa-single-service-content">
-                      <h4><a href="#">Property Development</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
-                    </div>
+                      <h4>Property Management</h4>
+                      <p>
+						Comprehensive Property Management Solutions in all areas of Chennai. 
+						Highly recommended as a leading property Management Services
+					  </p>
+					</div>
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -621,8 +628,8 @@
                       <span class="fa fa-bar-chart-o"></span>
                     </div>
                     <div class="aa-single-service-content">
-                      <h4><a href="#">Market Analysis</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                      <h4>Market Analysis</h4>
+                      <p>Analysis of the market based on current trends, historical data and many other factors</p>
                     </div>
                   </div>
                 </div>
@@ -635,7 +642,7 @@
   </section>
   <!-- / Service section -->
 
-  <!-- Promo Banner Section -->
+  <!-- //Promo Banner Section with movable forground and image at back 
   <section id="aa-promo-banner">
     <div class="container">
       <div class="row">
@@ -649,9 +656,9 @@
       </div>
     </div>
   </section>
-  <!-- / Promo Banner Section -->
+  // Promo Banner Section -->
 
-  <!-- Our Agent Section-->
+  <!-- //Our Agent Section
   <section id="aa-agents">
     <div class="container">
       <div class="row">
@@ -662,7 +669,7 @@
               <span></span>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>
             </div>
-            <!-- agents content -->
+  
             <div class="aa-agents-content">
               <ul class="aa-agents-slider">
                 <li>
@@ -808,7 +815,7 @@
       </div>
     </div>
   </section>
-  <!-- / Our Agent Section-->
+   // Our Agent Section-->
 
   <!-- Client Testimonial //commenting client testimonials
   <section id="aa-client-testimonial">
@@ -941,7 +948,7 @@
   </section>
   // Client brand -->
 
-  <!-- Latest blog -->
+  <!-- //Latest blog commenting latest news 
   <section id="aa-latest-blog">
     <div class="container">
       <div class="row">
@@ -954,7 +961,7 @@
             </div>
             <div class="aa-latest-blog-content">
               <div class="row">
-                <!-- start single blog -->
+                
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -972,7 +979,7 @@
                    
                   </article>
                 </div>
-                <!-- start single blog dd-->
+                
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -989,7 +996,7 @@
                     </div>                   
                   </article>
                 </div>
-                <!-- start single blog -->
+                
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -1013,7 +1020,7 @@
       </div>
     </div>
   </section>
-  <!-- / Latest blog -->
+   // Latest blog -->
   
   <!-- Contact us section -->
   <section id="aa-contact">
@@ -1024,53 +1031,35 @@
           <div class="aa-title">
               <h2>Contact Us</h2>
               <span></span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe magni, est harum repellendus. Accusantium, nostrum!</p>
+              <p>What is in your mind? feel free to contact us or leave a message.</p>
               <p>&nbsp;</p>
             </div>
             <div class="aa-contact-top">
               <div class="aa-contact-top-left">
-                <iframe width="100%" height="450" frameborder="0" allowfullscreen="" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256"></iframe>
-              </div>
-              <div class="aa-contact-top-right">
-                <h2>Contact</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae placeat aspernatur aperiam, quisquam voluptas enim tempore ab itaque nam modi eos corrupti distinctio nobis labore dolorum quae tenetur. Sapiente, sequi.</p>
-                <ul class="contact-info-list">
-                  <li> <i class="fa fa-phone"></i> 1-700-564-6321</li>
-                  <li> <i class="fa fa-envelope-o"></i> info@homeproperty.com</li>
-                  <li> <i class="fa fa-map-marker"></i> 36008 AL-77, Talladega, AL 35160, India</li>
-                </ul>
-              </div>
-            </div>
-            <div class="aa-contact-bottom">
-              <div class="aa-title">
-                <h2>Send Your Message</h2>
-                <span></span>
-                <p ng-bind="headerFB"></p>
-              </div>
-              <div class="aa-contact-form">
-                <form name="userFeedbackForm" ng-submit="submitFeedBackForm()" novalidate>
-
+                <div class="aa-contact-form">
+                <form class="contactform" name="userFeedbackForm" ng-submit="submitFeedBackForm()" novalidate>
+					<p class="form-group" ng-bind="headerFB"></p>
 					<!-- NAME -->
 					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.name.$invalid && !userFeedbackForm.name.$pristine }">
-						<label>Name</label>
+						<label>Name<span class="required">*</span></label>
 						<input type="text" name="name" class="form-control" ng-model="userFeedback.feedbackName" required>
 						<p ng-show="userFeedbackForm.name.$invalid && !userFeedbackForm.name.$pristine" class="help-block">You name is required.</p>
 					</div>
 					<!-- EMAIL -->
 					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.email.$invalid && !userFeedbackForm.email.$pristine }">
-						<label>Email</label>
+						<label>Email<span class="required">*</span></label>
 						<input type="email" name="email" class="form-control" ng-model="userFeedback.feedbackEmail">
 						<p ng-show="userFeedbackForm.email.$invalid && !userFeedbackForm.email.$pristine" class="help-block">Enter a valid email.</p>
 					</div>
 					<!-- SUBJECT -->
 					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.subject.$invalid && !userFeedbackForm.subject.$pristine }">
-						<label>Subject</label>
+						<label>Subject<span class="required">*</span></label>
 						<input type="text" name="subject" class="form-control" ng-model="userFeedback.feedbackSubject" required>
 						<p ng-show="userFeedbackForm.subject.$invalid && !userFeedbackForm.subject.$pristine" class="help-block">You subject is required.</p>
 					</div>
 					<!-- MESSAGE-->
 					<div class="form-group" ng-class="{ 'has-error' : userFeedbackForm.message.$invalid && !userFeedbackForm.message.$pristine }">
-						<label>Message</label>
+						<label>Message<span class="required">*</span></label>
 						<textarea name="message" class="form-control" ng-model="userFeedback.feedbackMessage" required></textarea>
 						<p ng-show="userFeedbackForm.message.$invalid && !userFeedbackForm.message.$pristine" class="help-block">You message is required.</p>
 					</div>
@@ -1088,7 +1077,19 @@
 					
 				</form>
               </div>
+				<!--<iframe width="100%" height="450" frameborder="0" allowfullscreen="" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256"></iframe>-->
+              </div>
+              <div class="aa-contact-top-right">
+                <h3>Contact</h3>
+                <ul class="contact-info-list">
+                  <li> <i class="fa fa-phone"></i> 9710553003</li>
+                  <li> <i class="fa fa-envelope-o"></i> raj@usnisa.in</li>
+                  <li> <i class="fa fa-map-marker"></i> 36, Tilak Street T. Nagar Chennai, Tamil Nadu 600017 India</li>
+                </ul>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.807300030201!2d80.23285171437621!3d13.047934590805829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52665835640669%3A0x3384f90f238c7116!2s36%2C+Tilak+St%2C+Parthasarathi+Puram%2C+T+Nagar%2C+Chennai%2C+Tamil+Nadu+600017!5e0!3m2!1sen!2sin!4v1477134048575" width="100%" height="60%" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
             </div>
+            
           </div>
        </div>
      </div>
@@ -1105,24 +1106,24 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="aa-footer-left">
-               <p>Designed by <a rel="nofollow" target="_blank" href="http://kirangorad.com/">Kiran Gorad</a></p>
+               <p>Designed by <a rel="nofollow" target="_blank" href="http://kirangorad.com/">usnisa.in</a></p>
               </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="aa-footer-middle">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-google-plus"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="https://www.facebook.com/usnisa.in/" target="_blank"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.linkedin.com/company/usnisa-consulting-llp" target="_blank"><i class="fa fa-linkedin"></i></a>
               </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
                 <a href="#">Home</a>
-                <a href="#">Support</a>
-                <a href="#">License</a>
+                <a href="mailto:support@usnisa.in?Subject=Support%20Request" target="_top">Support</a>
+                <!--
+				<a href="#">License</a>
                 <a href="#">FAQ</a>
-                <a href="#">Privacy & Term</a>
+                <a href="#">Privacy & Term</a> 
+				-->
               </div>
             </div>            
           </div>
