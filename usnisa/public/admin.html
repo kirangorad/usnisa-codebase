@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,11 +38,14 @@
   
 	<!-- Adding angular -->
 	<script src="js/angular.min.js"></script>
+	
+	<!-- Angular Controller -->
+	<script src="controllers/adminController.js"></script>
 	<!-- Application Configurations -->
 	<script src="controllers/config.js"></script>
 
   </head>
-  <body>
+  <body ng-controller="adminController">
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="pulse"></div>
@@ -95,8 +98,29 @@
       </div>
     </div>
   </section> 
-  
-  
+  <!-- Admin Dashboard -->
+  <section id="aa-admin-dashboard-section">
+    <div class="container">
+	  <div class="row">
+	  	<div class="col-md-12" style="margin-top:40px;">
+  			<div class="row row-centered">
+				<div class="col-md-4 col-centered">
+					<div class="row row-centered">
+						<a class="admin-count" href="" ng-bind="propertyCount"></a><br/>
+						<h2>Total Properties</h2>
+					</div>
+				</div>
+				<div class="col-md-4 col-centered">
+					<div class="row row-centered">
+						<a class="admin-count" href="" ng-bind="feedbackCount"></a><br/>
+						<h2>Total Feedbacks</h2>
+					</div>
+				</div>
+			</div>				
+	  	</div>
+	  </div>
+	</div>
+  </section>
   <!-- jQuery library -->
   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
   <script src="js/jquery.min.js"></script>   
@@ -110,7 +134,7 @@
   <!-- Custom js -->
   <script src="js/custom.js"></script> 
   <script>
-  
+  /*
   $(document).ready(function(){
 	  $.ajax({
 		  type: "GET",
@@ -125,7 +149,7 @@
 		  }
 	});
   });
-  
+  */
   </script>
   </body>
 </html>

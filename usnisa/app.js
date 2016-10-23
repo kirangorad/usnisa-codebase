@@ -13,6 +13,7 @@ var configDB = require('./config/database');
 
 var routes = require('./routes/index');
 var authRoutes = require('./routes/authRoutes')(passport);
+var adminRoutes = require('./routes/adminRoutes')(passport);
 var listingsRoutes = require('./routes/listingsRoutes')(passport);
 var feedbackRoutes = require('./routes/feedbackRoutes')(passport);
 //var users = require('./routes/users');
@@ -68,6 +69,7 @@ app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/list', listingsRoutes);
 app.use('/fback', feedbackRoutes);
+app.use('/admin', adminRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
