@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Home Property | Admin Login</title>
+    <title>USNISA | Admin Login</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -74,8 +74,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
             <li><a href="admin.html">HOME</a></li>
-            <li class="active"><a href="add-property.html">ADD PROPERTY</a></li>
-             
+			<li><a href="admin-property.html">PROPERTY</a></li>
+            			
           </ul>                          
         </div><!--/.nav-collapse -->       
       </div>          
@@ -143,7 +143,8 @@
 					  <input id="browse" class="form-control" type="file" onchange="previewFiles()" multiple>
 	                </div>
 	                <div class="form-group">
-	                  <input id="submitBtn" type="submit" value="Submit" name="submit" onclick="saveProperty()" class="btn btn-primary">                    
+						<input id="saveNewBtn" type="submit" value="Submit" name="submit" onclick="saveProperty()" class="btn btn-primary">
+						<input id="updateBtn" type="submit" value="update" name="update" class="btn btn-primary">	
 	                </div>						
   				</div>
   				<div class="col-md-6">
@@ -176,8 +177,74 @@
   
   <script>
   
-  $(document).ready(function(){
-	  $.ajax({
+	$(document).ready(function(){
+		checkAdminAuth();
+		var propertId = getParameterByName("propId");
+		if(propertId) {
+			$('#updateBtn').show();
+			$('#saveNewBtn').hide();
+			loadPropertyToModify(propertId);
+		}
+		else {
+			$('#updateBtn').hide();
+			$('#saveNewBtn').show();
+		}
+		
+		//calling update propert handler
+		$('#updateBtn').click(function(){updateProperty(propertId)});
+		
+	});
+	
+	//to remove the image
+	$('#preview').on('click', '.removeImg' ,function(){
+		$(this).parent().remove();
+	});
+	
+	//container for images to upload
+	var imageFiles = [];
+	
+	//function to load the property details to modify
+	function loadPropertyToModify(propertId) {
+		$.ajax({
+		  type: "GET",
+		  url: baseURL + '/list/' + propertId,
+		  success: function(response){
+			$("#name").val(response[0]['propertyName']);
+			$("#city").val(response[0]['propertyCity']);
+			$("#area").val(response[0]['propertyArea']);
+			$("#propertyDescription").val(response[0]['propertyDescription']);
+			$("#propertyCost").val(response[0]['propertyCost']);
+			$("#propType").val(response[0]['propertyType']);
+			imageFiles = imageFiles.concat(response[0]['propertyPictures']);
+			$(imageFiles).each(function(){
+				var propImage = '<div class="img-wrap">' +
+									'<span class="removeImg">&times;</span>' +
+									'<img src="'+ this +'" height = "100">' +
+								'</div>';
+				$('#preview').append(propImage);
+			});
+			
+		  },
+		  error: function(errResponse){
+			console.log(errResponse);	
+		  }
+		});
+	}
+	
+	//function to get query string parameter from url
+	function getParameterByName(name, url) {
+		if (!url) 
+			url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+	
+	//function to check whether user is admin or not
+	function checkAdminAuth() {
+		$.ajax({
 		  type: "GET",
 		  url: baseURL + '/auth/checkAdmin',
 		  success: function(response){
@@ -185,17 +252,15 @@
 				  window.location.replace("/signin-admin.html");
 		  },
 		  error: function(errResponse){
-		  	if(errResponse.status == 401 || errResponse.status == 403)
+			if(errResponse.status == 401 || errResponse.status == 403)
 				  window.location.replace("/signin-admin.html");	
 		  }
-	});
-  });
+		});
+	}
 
-	var imageFiles = [];
-	
+	//function to preview and load images
 	function previewFiles() {
 	
-	  var preview = document.querySelector('#preview');
 	  var files   = document.querySelector('input[type=file]').files;
 	
 	  function readAndPreview(file) {
@@ -205,11 +270,11 @@
 	      var reader = new FileReader();
 	
 	      reader.addEventListener("load", function () {
-	        var image = new Image();
-	        image.height = 100;
-	        image.title = file.name;
-	        image.src = this.result;
-	        preview.appendChild( image );
+	        var propImage = '<div class="img-wrap">' +
+								'<span class="removeImg">&times;</span>' +
+								'<img src="'+ this.result +'" height = "100">' +
+							'</div>';
+			$('#preview').append(propImage);				
 			
 			imageFiles.push(this.result);
 			
@@ -226,16 +291,16 @@
 	  
 	}
 	
-	
-	function saveProperty() {
-		
+	//function to validate the information and return for save or update
+	function validatePropDetails() {
 		var imageCount = 0;
-		var imageArrayString;
 		
-	    $(imageFiles).each(function(){
-	    	imageCount++;
-	    });
-	   
+		var imagesToPost = [];
+		$('#preview img').each(function(){
+			imageCount++;
+			imagesToPost.push($(this).attr('src'));	
+		});
+		
 		$("#errorHeader").hide();
 		
 		var isEmpty = $("#name").val() == "" || $("#city").val() == "" || $("#area").val() == "" || imageCount == 0;   
@@ -260,17 +325,23 @@
 				postProperty['propertyCost'] = 0;
 				
 			postProperty['propertyType'] = $("#propType").val();
-			postProperty['propertyPictures'] = imageFiles;
-			
-			bootbox.confirm({ 
-			  size: "small",
-			  message: "Are you sure?", 
-			  callback: function(result){
+			postProperty['propertyPictures'] = imagesToPost;
+					
+			return postProperty;
+		}
+	}
+	
+	//function to save or modify property
+	function saveProperty() {
+		bootbox.confirm({ 
+			size: "small",
+			message: "Are you sure?", 
+			callback: function(result){
 				if(result) {		
 					$.ajax({
 					  type: "POST",
 					  url: baseURL + '/list/',
-					  data: postProperty,
+					  data: validatePropDetails(),
 					  success: function(response){
 						  if(response.status == 200) {
 							bootbox.confirm({
@@ -281,7 +352,7 @@
 										location.reload();
 									}
 									else {
-										location.href = "/admin.html";
+										location.href = "/admin-property.html";
 									}
 								}
 							});
@@ -290,10 +361,38 @@
 					  error: function(){}
 					});
 				}	
-			  }
-			});		
-
-		}
+			}
+		});
+	}
+	
+	//function to update the property details
+	function updateProperty(propertId) {
+		
+		bootbox.confirm({ 
+			size: "small",
+			message: "Are you sure?", 
+			callback: function(result){
+				if(result) {		
+					$.ajax({
+					  type: "PUT",
+					  url: baseURL + '/list/' + propertId,
+					  data: validatePropDetails(),
+					  success: function(response){
+						  if(response.status == 200) {
+							bootbox.alert({
+								size: "small",
+								message: "Updated Sucessfully",
+								callback: function(){
+									location.href = "/admin-property.html";
+								}
+							});
+						  }
+					  },
+					  error: function(){}
+					});
+				}	
+			}
+		});
 	}
 	
 	</script>

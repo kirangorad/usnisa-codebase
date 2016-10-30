@@ -24,13 +24,10 @@ module.exports = function(passport) {
 	});
 
 	/* GET a property. */
-	router.get('/:propertyname', function(req, res, next) {
-		Property.find({'propertyname':req.params.propertyname}, function(err, property) {
-			  if (err) { throw err; }
-
-			  // object of all the property
-			  //console.log(property);
-			  res.json(property);
+	router.get('/:propertyID', function(req, res, next) {
+		Property.find({'_id':req.params.propertyID}, function(err, property) {
+			if (err) { throw err; }
+			res.json(property);
 		});
 	});
 
@@ -61,24 +58,32 @@ module.exports = function(passport) {
 	/* PUT update property. */
 	router.put('/:property_id', isLoggedIn, function(req, res, next) {
 		Property.findById(req.params.property_id, function(err, property) {
+			if (err) { throw err; }
+			  
+			property.propertyName = req.body.propertyName;
+			property.propertyCity = req.body.propertyCity;
+			property.propertyArea = req.body.propertyArea;
+			property.propertyType = req.body.propertyType;
+			property.propertyCost = req.body.propertyCost;
+			property.propertyDescription = req.body.propertyDescription;
+			property.propertyPictures = [];
+			req.body.propertyPictures.forEach(function(imageValue){
+				property.propertyPictures.push(imageValue);
+			});
+			
+			property.save(function(err){
 			  if (err) { throw err; }
-			  
-			  property.propertyName = req.body.propertyName;
-			  property.propertyCity = req.body.propertyCity;
-			  property.propertyArea = req.body.propertyArea;
-			  property.propertyType = req.body.propertyType;
-			  property.propertyPictures = req.body.propertyPictures;
-			  
-			  property.save(function(err){
-				  if (err) { throw err; }
-				  res.json({status:200, msg:'Property updated'});
-			  });
+			  res.json({status:200, msg:'Property updated'});
+			});
 		});
 	});
 
 	/* DELETE delete a property. */
 	router.delete('/:property_id', isLoggedIn, function(req, res, next) {
-	  res.send('delete property');
+	  Property.findByIdAndRemove(req.params.property_id, function(err, propertyID) {
+			if (err) { throw err; }
+			res.json({status:200, msg:'Property removed'});
+		});
 	});
 	
 	return router;

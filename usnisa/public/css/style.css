@@ -688,26 +688,41 @@ img {
   background-color: #f8f8f8;
 }
 
-#aa-add-property-section .previewImages{
-  display: inline;
-  float: left;
-  width: 100%;
-  padding: 40px 0;
+
+
+.img-wrap {
+    position: relative;
+    display: inline-block;
+    border: 1px solid;
+    font-size: 0;
+	margin: 10px;
 }
+.img-wrap .removeImg {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #F00;
+    padding: 2px 2px 3.5px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+.img-wrap:hover .removeImg {
+    opacity: 1;
+}
+
 
 #aa-add-property-section .required{
   color: #ff0000;
 }
 
-#aa-add-property-section .previewImages img{
-  display: inline;
-  float: left;
-  padding: 10px 10px;
-}
 
-#aa-add-property-section .previewImages img{
- resize: none;
-}
 
 .aa-title {
   display: inline;
