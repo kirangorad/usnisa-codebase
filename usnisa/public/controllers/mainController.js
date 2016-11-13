@@ -4,6 +4,8 @@ appHome.controller('mainController' , ['$scope','$http', 'app.config',function($
 
 	console.log("This is message from latest prperty controller",config.basePath);
 
+	
+	/* Commenting property listings call
 	$http({
 		method: 'GET',
 		url: config.basePath + '/list/',
@@ -16,6 +18,7 @@ appHome.controller('mainController' , ['$scope','$http', 'app.config',function($
 		.error(function (error, status){
 			console.log(error, status); 
 		});
+	*/	
 	
 	$scope.headerFB = "Your email address will not be published. Required fields are marked *";
 	
