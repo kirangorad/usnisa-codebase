@@ -19,6 +19,10 @@
     <link rel="stylesheet" type="text/css" href="css/nouislider.css">
 	<!-- DataTable Style -->
     <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+	<!-- DataTable responsive for mobile Style -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.dataTables.min.css">
+	<!-- DataTable Row Reorder for mobile Style -->
+    <link rel="stylesheet" type="text/css" href="css/rowReorder.dataTables.min.css">
 	<!-- Multiselect Style -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap-multiselect.css">
     <!-- Theme color -->
@@ -139,6 +143,10 @@
   <script type="text/javascript" src="js/nouislider.js"></script>
   <!-- Jquery DataTable -->
   <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+  <!-- Jquery DataTable row reorder for mobile -->
+  <script type="text/javascript" src="js/dataTables.rowReorder.min.js"></script>
+  <!-- Jquery DataTable responsive for mobile -->
+  <script type="text/javascript" src="js/dataTables.responsive.min.js"></script>
   <!-- Bootstrap Multiselect -->
   <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
   <!-- Custom js -->
@@ -189,16 +197,21 @@
 					$('#propertyTable > tbody').append(tBodyRow);
 				});
 				
-				$('.btn-deleteProperty').bind('click', removeSelectedProperty);
-				$('.btn-amendProperty').bind('click', amendSelectedProperty);
+				//$('.btn-deleteProperty').bind('click touch', removeSelectedProperty);
+				//$('.btn-amendProperty').bind('click touch', amendSelectedProperty);
 				
 				initPropertyTable();//Function to initialize the Jquery Datatable		
 			}
 		});
 	}
 	
+	//Added events outside for mobile support
+	$('#propertyTable').on('click','.btn-deleteProperty',removeSelectedProperty);
+	$('#propertyTable').on('click','.btn-amendProperty',amendSelectedProperty);
+	
 	//function to open add/modify page with property id
 	function amendSelectedProperty() {
+	
 		window.location.href = 'add-modify-property.html?propId=' + $(this).attr('prop-id');	
 	}
 	
@@ -235,6 +248,10 @@
 	function initPropertyTable() {
 		var headerIDCount = 0;
 		$('#propertyTable').DataTable( {
+			rowReorder: {
+				selector: 'td:nth-child(2)'
+			},
+			responsive: true,
 			initComplete: function () {
 				this.api().columns('.select-filter').every( function () {
 					var column = this;
